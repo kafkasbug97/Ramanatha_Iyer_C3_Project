@@ -6,6 +6,7 @@ import java.util.List;
 public class Restaurant {
     private String name;
     private String location;
+    private int price;
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
@@ -18,15 +19,25 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        return true;
-        //DELETE ABOVE STATEMENT AND WRITE CODE HERE
+        if(this.getCurrentTime().isAfter(this.openingTime) && this.getCurrentTime().isBefore(this.closingTime)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
-        return null;
-        //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
+        return this.menu;
+    }
+
+    public int findTotalPrice() {
+        int sum = 0;
+        for(Item item: menu) {
+        sum+=item.getPrice();
+        }
+        return sum;
     }
 
     private Item findItemByName(String itemName){
@@ -61,6 +72,10 @@ public class Restaurant {
 
     public String getName() {
         return name;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
 }
