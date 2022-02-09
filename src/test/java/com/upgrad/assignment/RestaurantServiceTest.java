@@ -1,3 +1,5 @@
+package com.upgrad.assignment;
+
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;

@@ -1,4 +1,5 @@
-import java.time.LocalDateTime;
+package com.upgrad.assignment;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +49,10 @@ public class Restaurant {
         return null;
     }
 
-    public void addToMenu(String name, int price) {
+    public Item addToMenu(String name, int price) {
         Item newItem = new Item(name,price);
         menu.add(newItem);
+        return newItem;
     }
     
     public void removeFromMenu(String itemName) throws itemNotFoundException {

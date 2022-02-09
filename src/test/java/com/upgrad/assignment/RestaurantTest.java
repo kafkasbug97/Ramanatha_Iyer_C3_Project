@@ -1,3 +1,5 @@
+package com.upgrad.assignment;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -20,21 +22,20 @@ class RestaurantTest {
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
-        //WRITE UNIT TEST CASE HERE
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
-
         Restaurant spy = Mockito.spy(restaurant);
 
         Mockito.when(spy.getCurrentTime()).thenReturn(spy.openingTime.plusHours(2));
 
-        assertTrue(restaurant.isRestaurantOpen());
+        assertTrue(spy.isRestaurantOpen());
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
-        //WRITE UNIT TEST CASE HERE
+        Restaurant spy = Mockito.spy(restaurant);
 
+        Mockito.when(spy.getCurrentTime()).thenReturn(spy.openingTime.minusHours(2));
+
+        assertFalse(spy.isRestaurantOpen());
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
